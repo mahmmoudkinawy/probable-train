@@ -1,0 +1,61 @@
+name: petscareclient
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  carousel_slider:
+  loading_btn:
+  shared_preferences:
+  flutter_neumorphic:
+  prompt_dialog: ^1.0.10
+  get:
+  google_fonts:
+  flutter_svg:
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  flutter_slidable:
+  image_picker:
+  path:
+  fluttertoast:
+  firebase_storage:
+  rename:
+  form_builder_validators: ^8.5.0
+  flutter_form_builder: ^7.8.0
+  http: ^0.13.5
+  another_flushbar: ^1.12.29
+  introduction_screen: ^3.1.6
+  url_launcher: ^6.1.10
+  flutter_launcher_icons:
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.jpg"
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - assets/svgs/
+    - assets/
