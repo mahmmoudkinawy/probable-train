@@ -41,10 +41,10 @@ class _DiscoverYourPetScreenState extends State<DiscoverYourPetScreen> {
     final response = await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 200) {
-      final decodedResponse = jsonDecode(response.body) as Map<String, dynamic>;
-      final concepts = decodedResponse['concepts'] as List<dynamic>;
-      final conceptNames =
-          concepts.map((concept) => concept['name'] as String).toList();
+      print('DATA BACK:=>' + response.body);
+
+      final conceptNames = List<String>.from(jsonDecode(response.body));
+
       print('API Data => $conceptNames');
       setState(() {
         _result = conceptNames;
@@ -93,12 +93,20 @@ class _DiscoverYourPetScreenState extends State<DiscoverYourPetScreen> {
                   ),
                   const SizedBox(height: 16),
                   if (_result != null)
-                    Column(
-                      children: _result!
-                          .map((name) => Text(
-                                name,
-                                style: Theme.of(context).textTheme.headline6,
-                              ))
+                    DataTable(
+                      columns: [
+                        DataColumn(label: Text('Concept')),
+                        DataColumn(label: Text('')),
+                      ],
+                      rows: _result!
+                          .map(
+                            (concept) => DataRow(
+                              cells: [
+                                DataCell(Text(concept)),
+                                DataCell(Icon(Icons.pets)),
+                              ],
+                            ),
+                          )
                           .toList(),
                     ),
                 ],
