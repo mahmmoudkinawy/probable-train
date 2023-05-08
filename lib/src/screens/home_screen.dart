@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'appointment_screen.dart';
 import 'category_detail_screen.dart';
 import 'clinics_screen.dart';
+import 'discover_your_pet.dart';
 import 'doctors_screen.dart';
 import 'pets_screen.dart';
 import 'profile_screen.dart';
@@ -77,15 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               CategoryCard(
-                title: 'Reviews',
-                image: 'assets/review.png',
+                title: 'Discover Your Pet',
+                image: 'assets/your-pet.png',
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CategoryDetailScreen(
-                        category: 'Reviews',
-                      ),
+                      builder: (context) => DiscoverYourPetScreen(),
                     ),
                   );
                 },
