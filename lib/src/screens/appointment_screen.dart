@@ -103,13 +103,14 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
     if (response.statusCode == 200) {
       Fluttertoast.showToast(
-          msg: "Appointment booked successfully!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.green,
-          textColor: Colors.white,
-          fontSize: 16.0);
+        msg: "Appointment booked successfully! An email has been sent to you.",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -141,7 +142,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   Widget build(BuildContext context) {
     if (doctors.isEmpty || clinics.isEmpty) {
       return Container(
-        color: Colors.blueGrey.shade200, // set your desired background color here
+        color:
+            Colors.blueGrey.shade200, // set your desired background color here
         child: const Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(
@@ -206,10 +208,12 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           setState(() {
                             selectedDoctorId = value!;
                             final clinicsForSelectedDoctor = clinics
-                                .where((clinic) => clinic.clinicOwnerId == value)
+                                .where(
+                                    (clinic) => clinic.clinicOwnerId == value)
                                 .toList();
                             if (clinicsForSelectedDoctor.isNotEmpty) {
-                              selectedClinicId = clinicsForSelectedDoctor.first.id;
+                              selectedClinicId =
+                                  clinicsForSelectedDoctor.first.id;
                             }
                           });
                         },
@@ -250,7 +254,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           );
                         },
                         items: clinics
-                            .where((clinic) => clinic.clinicOwnerId == selectedDoctorId)
+                            .where((clinic) =>
+                                clinic.clinicOwnerId == selectedDoctorId)
                             .map(
                               (clinic) => DropdownMenuItem<String>(
                                 value: clinic.id,
@@ -370,8 +375,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     width: 300,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(22.0),
                                 side: const BorderSide(color: Colors.black)),
