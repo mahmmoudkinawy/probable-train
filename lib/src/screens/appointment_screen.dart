@@ -24,8 +24,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
   String selectedDoctorId = '';
   String selectedClinicId = '';
-  String patientName = '';
-  String patientEmail = '';
+  String ownerName = '';
+  String ownerEmail = '';
   String phoneNumber = '';
   String notes = '';
 
@@ -79,8 +79,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
     final appointment = Appointment(
       appointmentDate: formData['appointmentDate'],
-      patientName: formData['patientName'],
-      patientEmail: formData['patientEmail'],
+      patientName: formData['ownerName'],
+      patientEmail: formData['ownerEmail'],
       phoneNumber: formData['phoneNumber'],
       notes: formData['notes'],
     );
@@ -300,9 +300,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: FormBuilderTextField(
-                        name: 'patientName',
+                        name: 'ownerName',
                         decoration: const InputDecoration(
-                          labelText: 'Patient Name',
+                          labelText: 'Owner Name',
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
@@ -319,9 +319,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: FormBuilderTextField(
-                        name: 'patientEmail',
+                        name: 'ownerEmail',
                         decoration: const InputDecoration(
-                          labelText: 'Patient Email',
+                          labelText: 'Owner Email',
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
