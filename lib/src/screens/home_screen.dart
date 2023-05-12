@@ -106,7 +106,31 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               CategoryCard(
                 title: 'Diseases',
-                image: 'assets/chat.png',
+                image: 'assets/diseases.png',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DiseasesScreen(),
+                    ),
+                  );
+                },
+              ),
+              CategoryCard(
+                title: 'Food Types',
+                image: 'assets/dry-food.png',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DiseasesScreen(),
+                    ),
+                  );
+                },
+              ),
+              CategoryCard(
+                title: 'Suppliers',
+                image: 'assets/suppliers.png',
                 onTap: () {
                   Navigator.push(
                     context,
