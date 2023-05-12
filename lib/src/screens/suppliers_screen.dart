@@ -39,7 +39,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Suppliers'),
+        title: const Text('Suppliers'),
       ),
       body: ListView.builder(
         itemCount: suppliers.length,
@@ -49,7 +49,8 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
               title: Text(suppliers[index]['name']),
               subtitle: Text(suppliers[index]['description']),
               leading: CircleAvatar(
-                child: Text(suppliers[index]['tag'][0]),
+                child: Text(suppliers[index]['tag']),
+                backgroundImage: NetworkImage(suppliers[index]['imageUrl']),
               ),
             ),
           );

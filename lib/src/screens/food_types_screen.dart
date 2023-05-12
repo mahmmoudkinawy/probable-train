@@ -38,7 +38,7 @@ class _FoodTypesScreenState extends State<FoodTypesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food Types'),
+        title: const Text('Food Types'),
       ),
       body: ListView.builder(
         itemCount: foodTypes.length,
@@ -48,7 +48,8 @@ class _FoodTypesScreenState extends State<FoodTypesScreen> {
               title: Text(foodTypes[index]['name']),
               subtitle: Text(foodTypes[index]['description']),
               leading: CircleAvatar(
-                child: Text(foodTypes[index]['tag'][0]),
+                child: Text(foodTypes[index]['tag']),
+                backgroundImage: NetworkImage(foodTypes[index]['imageUrl']),
               ),
             ),
           );
