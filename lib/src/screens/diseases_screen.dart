@@ -16,7 +16,7 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/metadata/diseases'),
+        Uri.parse('http://pets-care.somee.com/api/metadata/suppliers'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {

@@ -6,10 +6,12 @@ import 'clinics_screen.dart';
 import 'discover_your_pet.dart';
 import 'diseases_screen.dart';
 import 'doctors_screen.dart';
+import 'food_types_screen.dart';
 import 'pets_screen.dart';
 import 'profile_screen.dart';
 import 'search_screen.dart';
 import 'setting_screen.dart';
+import 'suppliers_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -85,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DiscoverYourPetScreen(),
+                      builder: (context) => const DiscoverYourPetScreen(),
                     ),
                   );
                 },
@@ -123,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DiseasesScreen(),
+                      builder: (context) => FoodTypesScreen(),
                     ),
                   );
                 },
@@ -135,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DiseasesScreen(),
+                      builder: (context) => SuppliersScreen(),
                     ),
                   );
                 },
