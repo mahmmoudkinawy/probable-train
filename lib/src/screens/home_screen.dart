@@ -4,6 +4,7 @@ import 'appointment_screen.dart';
 import 'category_detail_screen.dart';
 import 'clinics_screen.dart';
 import 'discover_your_pet.dart';
+import 'diseases_screen.dart';
 import 'doctors_screen.dart';
 import 'pets_screen.dart';
 import 'profile_screen.dart';
@@ -99,6 +100,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context) => const CategoryDetailScreen(
                         category: 'Chat',
                       ),
+                    ),
+                  );
+                },
+              ),
+              CategoryCard(
+                title: 'Diseases',
+                image: 'assets/chat.png',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DiseasesScreen(),
                     ),
                   );
                 },
