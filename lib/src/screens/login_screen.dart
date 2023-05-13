@@ -200,34 +200,35 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       height: 55,
                       width: 300,
-                       child:LoadingBtn(
-                         height: 50,
-                         borderRadius: 8,
-                         animate: true,
-                         color: Colors.blue,
-                         width: MediaQuery.of(context).size.width * 0.45,
-                         loader: Container(
-                           padding: const EdgeInsets.all(10),
-                           width: 40,
-                           height: 40,
-                           child: const CircularProgressIndicator(
-                             valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                           ),
-                         ),
-                         child: const Text("Login"),
-                         onTap: (startLoading, stopLoading, btnState) async {
-                           if (btnState == ButtonState.idle) {
-                             formKey.currentState!.save();
-                                 if (formKey.currentState!.validate()) {
-                                   startLoading();
-                                   _submitData();
-                                 }
-                             // call your network api
-                             await Future.delayed(const Duration(seconds: 5));
-                             stopLoading();
-                           }
-                         },
-                       ),
+                      child: LoadingBtn(
+                        height: 50,
+                        borderRadius: 8,
+                        animate: true,
+                        color: Colors.blue,
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        loader: Container(
+                          padding: const EdgeInsets.all(10),
+                          width: 40,
+                          height: 40,
+                          child: const CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        ),
+                        child: const Text("Login"),
+                        onTap: (startLoading, stopLoading, btnState) async {
+                          if (btnState == ButtonState.idle) {
+                            formKey.currentState!.save();
+                            if (formKey.currentState!.validate()) {
+                              startLoading();
+                              _submitData();
+                            }
+                            // call your network api
+                            await Future.delayed(const Duration(seconds: 5));
+                            stopLoading();
+                          }
+                        },
+                      ),
                       // ElevatedButton(
                       //   style: ButtonStyle(
                       //       shape: MaterialStateProperty.all<

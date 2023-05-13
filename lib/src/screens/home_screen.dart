@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petscareclient/src/screens/chatbot_screen.dart';
 
 import 'appointment_screen.dart';
 import 'category_detail_screen.dart';
@@ -99,9 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CategoryDetailScreen(
-                        category: 'Chat',
-                      ),
+                      builder: (context) => const ChatbotScreen(),
                     ),
                   );
                 },
