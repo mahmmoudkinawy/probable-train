@@ -41,45 +41,52 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
       appBar: AppBar(
         title: const Text('Chat with Bot'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final message = _messages[index];
-                return ListTile(
-                  title: Text(
-                    message.sender + ': ' + message.text,
-                    style: TextStyle(
-                      fontWeight:
-                          message.sender == 'You' ? FontWeight.bold : null,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          Row(
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height -
+              AppBar().preferredSize.height -
+              MediaQuery.of(context).padding.top,
+          child: Column(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: const InputDecoration(
-                      hintText: 'Type your message...',
-                    ),
-                  ),
+                child: ListView.builder(
+                  itemCount: _messages.length,
+                  itemBuilder: (context, index) {
+                    final message = _messages[index];
+                    return ListTile(
+                      title: Text(
+                        message.sender + ': ' + message.text,
+                        style: TextStyle(
+                          fontWeight:
+                              message.sender == 'You' ? FontWeight.bold : null,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
-              IconButton(
-                onPressed: _sendMessage,
-                icon: const Icon(Icons.send),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: _messageController,
+                        decoration: const InputDecoration(
+                          hintText: 'Type your message...',
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: _sendMessage,
+                    icon: const Icon(Icons.send),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
