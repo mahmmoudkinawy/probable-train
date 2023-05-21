@@ -36,7 +36,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/doctors'),
+        Uri.parse('http://10.0.2.2:5228/api/doctors'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
@@ -55,7 +55,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/clinics'),
+        Uri.parse('http://10.0.2.2:5228/api/clinics'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
@@ -87,7 +87,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
     final response = await http.post(
       Uri.parse(
-          'http://pets-care.somee.com/api/doctors/$selectedDoctorId/clinics/$selectedClinicId/appointments'),
+          'http://10.0.2.2:5228/api/doctors/$selectedDoctorId/clinics/$selectedClinicId/appointments'),
       headers: {
         'Authorization': 'Bearer ${user!.token}',
         'Content-Type': 'application/json',

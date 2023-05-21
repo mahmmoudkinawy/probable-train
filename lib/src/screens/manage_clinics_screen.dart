@@ -29,7 +29,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-      Uri.parse('http://pets-care.somee.com/api/clinics/current-user-clinics'),
+      Uri.parse('http://10.0.2.2:5228/api/clinics/current-user-clinics'),
       headers: {'Authorization': 'Bearer ${user!.token}'},
     );
 
@@ -51,7 +51,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
     final user = await getUser();
 
     final response = await http.delete(
-      Uri.parse('http://pets-care.somee.com/api/clinics/$clinicId'),
+      Uri.parse('http://10.0.2.2:5228/api/clinics/$clinicId'),
       headers: {'Authorization': 'Bearer ${user!.token}'},
     );
 
@@ -257,7 +257,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
           DateFormat('HH:mm:ss').format(closingTime.toLocal());
 
       final response = await http.post(
-        Uri.parse('http://pets-care.somee.com/api/clinics'),
+        Uri.parse('http://10.0.2.2:5228/api/clinics'),
         headers: {
           'Authorization': 'Bearer ${user!.token}',
           'Content-Type': 'application/json'
@@ -399,8 +399,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
                     clinicOwnerId: '687fe318-d3a4-4a15-afd7-f5af860d009c',
                   );
                   final response = await http.put(
-                    Uri.parse(
-                        'http://pets-care.somee.com/api/clinics/${clinic.id}'),
+                    Uri.parse('http://10.0.2.2:5228/api/clinics/${clinic.id}'),
                     headers: {
                       'Authorization': 'Bearer ${user!.token}',
                       'Content-Type': 'application/json'
@@ -429,7 +428,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
       final user = await getUser();
 
       final response = await http.put(
-        Uri.parse('http://pets-care.somee.com/api/clinics/${clinic.id}'),
+        Uri.parse('http://10.0.2.2:5228/api/clinics/${clinic.id}'),
         headers: {
           'Authorization': 'Bearer ${user!.token}',
           'Content-Type': 'application/json'
@@ -542,7 +541,7 @@ class _ManageClinicsScreenState extends State<ManageClinicsScreen> {
                                               final response =
                                                   await http.delete(
                                                 Uri.parse(
-                                                    'http://pets-care.somee.com/api/clinics/${clinic.id}'),
+                                                    'http://10.0.2.2:5228/api/clinics/${clinic.id}'),
                                                 headers: {
                                                   'Authorization':
                                                       'Bearer ${user!.token}'

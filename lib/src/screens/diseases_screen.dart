@@ -16,8 +16,9 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/metadata/suppliers'),
-        headers: {'Authorization': 'Bearer ${user!.token}'});
+      Uri.parse('http://10.0.2.2:5228/api/metadata/diseases'),
+      headers: {'Authorization': 'Bearer ${user!.token}'},
+    );
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
@@ -47,83 +48,98 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
       body: ListView.builder(
         itemCount: _diseasesData.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(_diseasesData[index].name),
-            subtitle: Text(_diseasesData[index].tag),
-            onTap: () {
-              // Navigate to a new screen to display detailed information
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailedDiseaseScreen(
-                      disease: _diseasesData[index].toMap()),
+          final disease = _diseasesData[index];
+          return Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: ExpansionTile(
+                title: Text(
+                  disease.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
                 ),
-              );
-            },
+                subtitle: Text(
+                  'Tag: ${disease.tag}',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.grey[600],
+                  ),
+                ),
+                children: [
+                  ListTile(
+                    title: Text(
+                      'Description',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    subtitle: Text(
+                      disease.description,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Symptoms',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    subtitle: buildTextWithLineBreaks(disease.symptoms),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Causes',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    subtitle: buildTextWithLineBreaks(disease.causes),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Treatment',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    subtitle: buildTextWithLineBreaks(disease.treatment),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),
     );
   }
-}
 
-class DetailedDiseaseScreen extends StatelessWidget {
-  final Map disease;
-
-  DetailedDiseaseScreen({required this.disease});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(disease['name']),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Description:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(disease['description']),
-            SizedBox(height: 16.0),
-            Text(
-              'Symptoms:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(disease['symptoms']),
-            SizedBox(height: 16.0),
-            Text(
-              'Causes:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(disease['causes']),
-            SizedBox(height: 16.0),
-            Text.rich(
-              TextSpan(
-                text: 'Treatment:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-                children: [
-                  for (String treatment in disease['treatment'].split('\n'))
-                    TextSpan(
-                      text: treatment,
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
+  Widget buildTextWithLineBreaks(String text) {
+    final lines = text.split('\n');
+    return Text(
+      lines.join('\n'),
+      style: TextStyle(
+        fontSize: 14.0,
+        color: Colors.grey[800],
       ),
     );
   }
 }
 
 class Disease {
+  final String id;
   final String name;
   final String tag;
   final String description;
@@ -132,6 +148,7 @@ class Disease {
   final String treatment;
 
   Disease({
+    required this.id,
     required this.name,
     required this.tag,
     required this.description,
@@ -142,23 +159,13 @@ class Disease {
 
   factory Disease.fromJson(Map<String, dynamic> json) {
     return Disease(
-      name: json['name'],
-      tag: json['tag'],
-      description: json['description'],
-      symptoms: json['symptoms'],
-      causes: json['causes'],
-      treatment: json['treatment'],
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      tag: json['tag'] ?? '',
+      description: json['description'] ?? '',
+      symptoms: json['symptoms'] ?? '',
+      causes: json['causes'] ?? '',
+      treatment: json['treatment'] ?? '',
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'tag': tag,
-      'description': description,
-      'symptoms': symptoms,
-      'causes': causes,
-      'treatment': treatment,
-    };
   }
 }

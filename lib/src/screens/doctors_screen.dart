@@ -15,8 +15,6 @@ class DoctorsScreen extends StatefulWidget {
 class _DoctorsScreenState extends State<DoctorsScreen> {
   List<Doctor> _doctors = [];
 
-  
-
   @override
   void initState() {
     super.initState();
@@ -27,7 +25,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/doctors'),
+        Uri.parse('http://10.0.2.2:5228/api/doctors'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
@@ -44,10 +42,10 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     if (_doctors.isEmpty) {
       return Container(
-        color: Colors.blueGrey.shade200, // set your desired background color here
+        color:
+            Colors.blueGrey.shade200, // set your desired background color here
         child: const Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(
@@ -59,21 +57,21 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
     }
     return Scaffold(
       backgroundColor: Colors.grey[200],
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-          elevation: 0,
-          iconTheme: const IconThemeData(color: Colors.black),
-          backgroundColor: Colors.grey.shade200,
-          title: const Text(
-            'Available Doctors',
-            style: TextStyle(color: Colors.black),
-          ),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
         ),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: Colors.grey.shade200,
+        title: const Text(
+          'Available Doctors',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverPadding(

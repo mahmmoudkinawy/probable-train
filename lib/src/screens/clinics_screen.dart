@@ -26,7 +26,7 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/clinics'),
+        Uri.parse('http://10.0.2.2:5228/api/clinics'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
@@ -41,10 +41,10 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     if (_clinics.isEmpty) {
       return Container(
-        color: Colors.blueGrey.shade200, // set your desired background color here
+        color:
+            Colors.blueGrey.shade200, // set your desired background color here
         child: const Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(

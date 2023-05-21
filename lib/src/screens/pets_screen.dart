@@ -26,7 +26,7 @@ class _PetsScreenState extends State<PetsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/animals'),
+        Uri.parse('http://10.0.2.2:5228/api/animals'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
@@ -43,7 +43,8 @@ class _PetsScreenState extends State<PetsScreen> {
   Widget build(BuildContext context) {
     if (_pets.isEmpty) {
       return Container(
-        color: Colors.blueGrey.shade200, // set your desired background color here
+        color:
+            Colors.blueGrey.shade200, // set your desired background color here
         child: const Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(

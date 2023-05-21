@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final password = passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://pets-care.somee.com/api/account/login'),
+      Uri.parse('http://10.0.2.2:5228/api/account/login'),
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
       body: json.encode({
         'email': email,
