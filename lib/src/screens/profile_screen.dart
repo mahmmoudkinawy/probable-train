@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       final request = http.MultipartRequest(
         'POST',
         Uri.parse(
-          'http://10.0.2.2:5228/api/users/add-image',
+          'http://pets-care.somee.com/api/users/add-image',
         ),
       );
 

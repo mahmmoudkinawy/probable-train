@@ -35,7 +35,7 @@ class RegisterScreenState extends State<RegisterScreen> {
     final password = passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:5228/api/account/register'),
+      Uri.parse('http://pets-care.somee.com/api/account/register'),
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
       body: json.encode({
         'firstName': firstName,

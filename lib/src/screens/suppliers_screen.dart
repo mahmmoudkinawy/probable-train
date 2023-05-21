@@ -16,7 +16,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
     final user = await getUser();
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:5228/api/metadata/suppliers'),
+      Uri.parse('http://pets-care.somee.com/api/metadata/suppliers'),
       headers: {'Authorization': 'Bearer ${user!.token}'},
     );
 
