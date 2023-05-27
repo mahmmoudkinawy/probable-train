@@ -26,7 +26,7 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/clinics'),
+        Uri.parse('http://10.0.2.2:5228/api/clinics'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {

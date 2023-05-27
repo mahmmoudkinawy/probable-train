@@ -31,7 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Future<void> _search(String keyword) async {
     final user = await getUser();
     final response = await http.get(
-      Uri.parse('http://pets-care.somee.com/api/search?query=$keyword'),
+      Uri.parse('http://10.0.2.2:5228/api/search?query=$keyword'),
       headers: {'Authorization': 'Bearer ${user?.token}'},
     );
 

@@ -25,13 +25,14 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/doctors'),
+        Uri.parse('http://10.0.2.2:5228/api/doctors'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
       final jsonList = json.decode(response.body) as List;
       final doctorsList =
           jsonList.map((json) => Doctor.fromJson(json)).toList();
+      print(doctorsList);
       setState(() {
         _doctors = doctorsList;
       });

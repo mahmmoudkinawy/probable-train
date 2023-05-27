@@ -33,7 +33,7 @@ class _DiscoverYourPetScreenState extends State<DiscoverYourPetScreen> {
     // Send the image to the API
     final request = http.MultipartRequest(
       'POST',
-      Uri.parse('http://pets-care.somee.com/api/search/detect-data'),
+      Uri.parse('http://10.0.2.2:5228/api/search/detect-data'),
     )
       ..headers.addAll({'Authorization': 'Bearer ${user!.token}'})
       ..files.add(await http.MultipartFile.fromPath('image', _imageFile!.path));

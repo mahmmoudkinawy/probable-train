@@ -26,11 +26,12 @@ class _PetsScreenState extends State<PetsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/animals'),
+        Uri.parse('http://10.0.2.2:5228/api/animals'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
       setState(() {
         _pets = List<Pet>.from(jsonResponse.map((pet) => Pet.fromJson(pet)));
       });

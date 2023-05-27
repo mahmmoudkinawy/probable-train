@@ -18,7 +18,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   void initState() {
     super.initState();
 
-    // create the connection
     _connection = HubConnectionBuilder()
         .withUrl('http://10.0.2.2:5228/hubs/chatbot')
         .build();

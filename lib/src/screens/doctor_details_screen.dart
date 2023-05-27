@@ -31,7 +31,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     final user = await getUser();
 
     final response = await http.get(
-        Uri.parse('http://pets-care.somee.com/api/doctors/${id}'),
+        Uri.parse('http://10.0.2.2:5228/api/doctors/${id}'),
         headers: {'Authorization': 'Bearer ${user!.token}'});
 
     if (response.statusCode == 200) {
