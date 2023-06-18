@@ -93,21 +93,17 @@ class _DiscoverYourPetScreenState extends State<DiscoverYourPetScreen> {
                   ),
                   const SizedBox(height: 16),
                   if (_result != null)
-                    DataTable(
-                      columns: [
-                        DataColumn(label: Text('Concept')),
-                        DataColumn(label: Text('')),
-                      ],
-                      rows: _result!
-                          .map(
-                            (concept) => DataRow(
-                              cells: [
-                                DataCell(Text(concept)),
-                                DataCell(Icon(Icons.pets)),
-                              ],
-                            ),
-                          )
-                          .toList(),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: _result!.length,
+                        itemBuilder: (context, index) {
+                          final concept = _result![index];
+                          return ListTile(
+                            title: Text(concept),
+                            trailing: const Icon(Icons.pets),
+                          );
+                        },
+                      ),
                     ),
                 ],
               ),
